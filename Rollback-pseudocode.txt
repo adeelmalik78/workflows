@@ -35,6 +35,7 @@ liquibase history       # validate that rolled back changes no longer appear in 
 # Workflow 3: Rollback specific number of changesets
 #   Docs for rollback-count: https://docs.liquibase.com/commands/rollback/rollback-count.html
 #   Docs for rollback-count-sql: https://docs.liquibase.com/commands/rollback/rollback-count-sql.html
+
 # Pipeline parameter: Rollback_count
 
 liquibase diff          # against snapshot after previous deployment to the same environment
