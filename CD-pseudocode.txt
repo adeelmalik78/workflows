@@ -6,7 +6,7 @@
 
 #   Snapshot from previous deployment to the same environment should be available for comparison.
 
-# Flow file as pseudocode
+# pseudocode for Liquibase Flow file
 
 liquibase validate
 liquibase checks run

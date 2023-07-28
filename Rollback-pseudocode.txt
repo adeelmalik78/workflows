@@ -3,12 +3,14 @@
 # ASSUMPTION -
 #   Snapshot from previous deployment to the same environment should be available for comparison.
 
-# Flow file as pseudocode
+# pseudocode for Liquibase Flow file
 
+
+##############################################################################################################
 # Workflow 1: Rollback to tag
 #   Docs for rollback: https://docs.liquibase.com/commands/rollback/rollback-by-tag.html
 #   Docs for rollback-sql: https://docs.liquibase.com/commands/rollback/rollback-sql.html
-
+##############################################################################################################
 # Pipeline parameter: Tag_name
 
 liquibase diff          # against snapshot after previous deployment to the same environment
@@ -19,9 +21,11 @@ liquibase history       # validate that rolled back changes no longer appear in 
 
 
 
+##############################################################################################################
 # Workflow 2: Rollback previous deployment
 #   Docs for rollback-one-update: https://docs.liquibase.com/commands/rollback/rollback-one-update.html
 #   Docs for rollback-one-update-sql: https://docs.liquibase.com/commands/rollback/rollback-one-update-sql.html
+##############################################################################################################
 
 # Pipeline parameter: None
 
@@ -32,9 +36,12 @@ liqubiase snapshot      # produce a new snapshot after new deployment and replac
 liquibase history       # validate that rolled back changes no longer appear in this "history" output.
 
 
+
+##############################################################################################################
 # Workflow 3: Rollback specific number of changesets
 #   Docs for rollback-count: https://docs.liquibase.com/commands/rollback/rollback-count.html
 #   Docs for rollback-count-sql: https://docs.liquibase.com/commands/rollback/rollback-count-sql.html
+##############################################################################################################
 
 # Pipeline parameter: Rollback_count
 

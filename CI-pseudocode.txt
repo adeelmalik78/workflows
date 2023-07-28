@@ -4,7 +4,7 @@
 #   CI pipeline runs Liquibase Quality Checks and produces artifacts
 #   CD pipeline deploys to Test and Prod databases
 
-# Flow file as pseudocode
+# pseudocode for Liquibase Flow file
 
 liquibase validate
 liquibase checks run
