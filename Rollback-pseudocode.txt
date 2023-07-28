@@ -1,0 +1,33 @@
+# This workflow outlines on-demand rollbacks
+# There are multiple rollback operations available in Liquibase
+# ASSUMPTION -
+#   Snapshot from previous deployment to the same environment should be available for comparison.
+
+# Flow file as pseudocode
+
+# Workflow 1: Rollback to tag
+# Pipeline parameter: Tag_name
+
+liquibase diff          # against snapshot after previous deployment to the same environment
+liquibase rollback ${tag_name}  # rollback all new changes until the $tag_name} 
+liqubiase snapshot      # produce a new snapshot after new deployment and replace previous snapshot with this one
+liquibase history       # validate that rolled back changes no longer appear in this "history" output.
+
+
+
+# Workflow 2: Rollback previous deployment
+# Pipeline parameter: None
+
+liquibase diff          # against snapshot after previous deployment to the same environment
+liquibase rollback-one-update --force # rollback all changes that were deployed in the last deployment to this environment
+liqubiase snapshot      # produce a new snapshot after new deployment and replace previous snapshot with this one
+liquibase history       # validate that rolled back changes no longer appear in this "history" output.
+
+
+# Workflow 3: Rollback specific number of changesets
+# Pipeline parameter: Rollback_count
+
+liquibase diff          # against snapshot after previous deployment to the same environment
+liquibase rollback-count ${Rollback_count}      # rollback last X number of changesets, X = ${Rollback_count}
+liqubiase snapshot      # produce a new snapshot after new deployment and replace previous snapshot with this one
+liquibase history       # validate that rolled back changes no longer appear in this "history" output.
