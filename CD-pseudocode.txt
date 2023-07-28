@@ -13,6 +13,7 @@ liquibase checks run
 liquibase diff          # against snapshot after previous deployment to the same environment
 liquibase status --verbose
 liquibase tag           # tag database
+liquibase update-sql    # output SQL prior to deployment
 liquibase update        # deploy new changes
 liqubiase snapshot      # produce a new snapshot after new deployment and replace previous snapshot with this one
 liquibase history       # validate that new changes appear in this "history" output.
