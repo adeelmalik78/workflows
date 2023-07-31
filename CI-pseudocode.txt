@@ -8,9 +8,14 @@
 
 liquibase validate
 liquibase checks run
+liquibase diff          # against snapshot after previous deployment to the same environment
+liquibase update-sql    # output SQL prior to deployment
+
 
 # No need to run snapshot here because 
 #   ... developers have access to the Dev database and can make changes manually
 #   ... developers use Dev database to work on future releases
 # As such, there is no need to compare Dev with Test or Prod databases as there are changes in Dev database that are no eligible for Test and Prod
 
+# Produce an artifact containing changelogs and SQL directories
+#   ... Also include output from "diff" and "update-sql" commands.
